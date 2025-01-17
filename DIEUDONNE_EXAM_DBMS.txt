@@ -1,0 +1,488 @@
+
+mysql> CREATE DATABASE EXAMINATION;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE EXAMINATION;
+Database changed
+mysql> CREATE TABLE CLIENT_MASTER(clientNo int(4) primary key auto_increment,name varchar(255),Address varchar(255),City varchar(255),State varchar(255),bal_due int(4));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> insert into client_master values('',"iradukunda dieudonne","H23","HUYE","LOSNGLES",2300);
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> insert into client_master values('',"UWERA AMINA","H83","HUYE","LOSNGLES",2400);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into client_master values('',"SEMANA AMINA","H86","HUYE","LOSNGLES",3400);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into client_master values('',"SENTWARI ARTHUR","H46","HUYE","LOSNGLES",4400);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into client_master values('',"ABIMANA SIMEON","H41","HUYE","LOSNGLES",6400);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> SELECT * FROM CLIENT_MASTER;
++----------+----------------------+---------+------+----------+---------+
+| clientNo | name                 | Address | City | State    | bal_due |
++----------+----------------------+---------+------+----------+---------+
+|        1 | iradukunda dieudonne | H23     | HUYE | LOSNGLES |    2300 |
+|        2 | UWERA AMINA          | H83     | HUYE | LOSNGLES |    2400 |
+|        3 | SEMANA AMINA         | H86     | HUYE | LOSNGLES |    3400 |
+|        4 | SENTWARI ARTHUR      | H46     | HUYE | LOSNGLES |    4400 |
+|        5 | ABIMANA SIMEON       | H41     | HUYE | LOSNGLES |    6400 |
++----------+----------------------+---------+------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT NAME FROM CLIENT_MASTER WHERE BAL_DUE>5000;
++----------------+
+| NAME           |
++----------------+
+| ABIMANA SIMEON |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE SET bal_due=5100 where clientno=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET bal_due=5100 where clientno=1' at line 1
+mysql> UPDATE client_master SET bal_due='5100' where clientno=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from client_master;
++----------+----------------------+---------+------+----------+---------+
+| clientNo | name                 | Address | City | State    | bal_due |
++----------+----------------------+---------+------+----------+---------+
+|        1 | iradukunda dieudonne | H23     | HUYE | LOSNGLES |    5100 |
+|        2 | UWERA AMINA          | H83     | HUYE | LOSNGLES |    2400 |
+|        3 | SEMANA AMINA         | H86     | HUYE | LOSNGLES |    3400 |
+|        4 | SENTWARI ARTHUR      | H46     | HUYE | LOSNGLES |    4400 |
+|        5 | ABIMANA SIMEON       | H41     | HUYE | LOSNGLES |    6400 |
++----------+----------------------+---------+------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update client_master set name="client12"where clientNo=5;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from client_master;
++----------+----------------------+---------+------+----------+---------+
+| clientNo | name                 | Address | City | State    | bal_due |
++----------+----------------------+---------+------+----------+---------+
+|        1 | iradukunda dieudonne | H23     | HUYE | LOSNGLES |    5100 |
+|        2 | UWERA AMINA          | H83     | HUYE | LOSNGLES |    2400 |
+|        3 | SEMANA AMINA         | H86     | HUYE | LOSNGLES |    3400 |
+|        4 | SENTWARI ARTHUR      | H46     | HUYE | LOSNGLES |    4400 |
+|        5 | client12             | H41     | HUYE | LOSNGLES |    6400 |
++----------+----------------------+---------+------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE client_master SET bal_due='Rs.5100' where clientno=1;
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+mysql> select * from client_master;
++----------+----------------------+---------+------+----------+---------+
+| clientNo | name                 | Address | City | State    | bal_due |
++----------+----------------------+---------+------+----------+---------+
+|        1 | iradukunda dieudonne | H23     | HUYE | LOSNGLES |       0 |
+|        2 | UWERA AMINA          | H83     | HUYE | LOSNGLES |    2400 |
+|        3 | SEMANA AMINA         | H86     | HUYE | LOSNGLES |    3400 |
+|        4 | SENTWARI ARTHUR      | H46     | HUYE | LOSNGLES |    4400 |
+|        5 | client12             | H41     | HUYE | LOSNGLES |    6400 |
++----------+----------------------+---------+------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE client_master SET bal_due='5100' where clientno=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from client_master;
++----------+----------------------+---------+------+----------+---------+
+| clientNo | name                 | Address | City | State    | bal_due |
++----------+----------------------+---------+------+----------+---------+
+|        1 | iradukunda dieudonne | H23     | HUYE | LOSNGLES |    5100 |
+|        2 | UWERA AMINA          | H83     | HUYE | LOSNGLES |    2400 |
+|        3 | SEMANA AMINA         | H86     | HUYE | LOSNGLES |    3400 |
+|        4 | SENTWARI ARTHUR      | H46     | HUYE | LOSNGLES |    4400 |
+|        5 | client12             | H41     | HUYE | LOSNGLES |    6400 |
++----------+----------------------+---------+------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> alter table client_master rename to Client12;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from client12;
++----------+----------------------+---------+------+----------+---------+
+| clientNo | name                 | Address | City | State    | bal_due |
++----------+----------------------+---------+------+----------+---------+
+|        1 | iradukunda dieudonne | H23     | HUYE | LOSNGLES |    5100 |
+|        2 | UWERA AMINA          | H83     | HUYE | LOSNGLES |    2400 |
+|        3 | SEMANA AMINA         | H86     | HUYE | LOSNGLES |    3400 |
+|        4 | SENTWARI ARTHUR      | H46     | HUYE | LOSNGLES |    4400 |
+|        5 | client12             | H41     | HUYE | LOSNGLES |    6400 |
++----------+----------------------+---------+------+----------+---------+
+5 rows in set (0.01 sec)
+
+mysql> create table DEPARTMENT(DEPId int(4) primary key auto_increment,DPname varchar(255),DPLOCATION VARCHAR(255),DEPTEL INT(4),DEPINFO VARCHAR(255));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> DESCRIBE DEPARTMENT;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| DEPId      | int          | NO   | PRI | NULL    | auto_increment |
+| DPname     | varchar(255) | YES  |     | NULL    |                |
+| DPLOCATION | varchar(255) | YES  |     | NULL    |                |
+| DEPTEL     | int          | YES  |     | NULL    |                |
+| DEPINFO    | varchar(255) | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.02 sec)
+
+mysql> CREATE TABLE EMPLOYEES(EMPID INT(4) PRIMARY KEY AUTO_INCREMENT,DEPID INT(4),FOREIGN KEY(DEPID) REFERENCES DEPARTMENT(DEPID),EMPNAME VARCHAR(255),EMPTEL VARCHAR(255),EMPLSALARY INT(5));
+Query OK, 0 rows affected, 3 warnings (0.02 sec)
+
+mysql> INSERT INTO  DEPARTMENT('',"BIT","HUYE",0790683445,"bit@org");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''',"BIT","HUYE",0790683445,"bit@org")' at line 1
+mysql> INSERT INTO  DEPARTMENT VALUES('',"BIT","HUYE",0790683445,"bit@org");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> INSERT INTO  DEPARTMENT VALUES('',"ACC","HUYE",0790683445,"ACC@org");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> INSERT INTO  DEPARTMENT VALUES('',"FINANCE","HUYE",0780683445,"FINANCE@org");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> INSERT INTO  DEPARTMENT VALUES('',"LOGISTIC","HUYE",0780683485,"LOGISTICE@org");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> INSERT INTO  DEPARTMENT VALUES('',"TRANSPORT","HUYE",0780686485,"TRANS.ORG");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql>
+mysql> SELECT * FROM DEPARTMENT;
++-------+-----------+------------+-----------+---------------+
+| DEPId | DPname    | DPLOCATION | DEPTEL    | DEPINFO       |
++-------+-----------+------------+-----------+---------------+
+|     1 | BIT       | HUYE       | 790683445 | bit@org       |
+|     2 | ACC       | HUYE       | 790683445 | ACC@org       |
+|     3 | FINANCE   | HUYE       | 780683445 | FINANCE@org   |
+|     4 | LOGISTIC  | HUYE       | 780683485 | LOGISTICE@org |
+|     5 | TRANSPORT | HUYE       | 780686485 | TRANS.ORG     |
++-------+-----------+------------+-----------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('',1,"BYIRINGIRO EMMANUEL",0788908912,20000);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('',2,"HAKIZIMANA EMMANUEL",0788908932,30000);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('',3,"HAKIZIMANA BAHATI",0788908432,50000);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('',4,"HABINGABIRE OLIVIER",0788900432,70000);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES('',5,"IRADUKUNDA DIEUDONNE",0788900032,100000);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES;
++-------+-------+----------------------+-----------+------------+
+| EMPID | DEPID | EMPNAME              | EMPTEL    | EMPLSALARY |
++-------+-------+----------------------+-----------+------------+
+|     1 |     1 | BYIRINGIRO EMMANUEL  | 788908912 |      20000 |
+|     2 |     2 | HAKIZIMANA EMMANUEL  | 788908932 |      30000 |
+|     3 |     3 | HAKIZIMANA BAHATI    | 788908432 |      50000 |
+|     4 |     4 | HABINGABIRE OLIVIER  | 788900432 |      70000 |
+|     5 |     5 | IRADUKUNDA DIEUDONNE | 788900032 |     100000 |
++-------+-------+----------------------+-----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT EMPLOYEES.EMPNAME,DEPARTMENT.PDNAME FROM EMPLOYEES LEFT JOIN DEPARTMENT ON DEPARTMENT.DEPID= EMPLOYEES.EMPID;
+ERROR 1054 (42S22): Unknown column 'DEPARTMENT.PDNAME' in 'field list'
+mysql> SELECT EMPLOYEES.EMPNAME,DEPARTMENT.DPNAME FROM EMPLOYEES LEFT JOIN DEPARTMENT ON DEPARTMENT.DEPID= EMPLOYEES.EMPID;
++----------------------+-----------+
+| EMPNAME              | DPNAME    |
++----------------------+-----------+
+| BYIRINGIRO EMMANUEL  | BIT       |
+| HAKIZIMANA EMMANUEL  | ACC       |
+| HAKIZIMANA BAHATI    | FINANCE   |
+| HABINGABIRE OLIVIER  | LOGISTIC  |
+| IRADUKUNDA DIEUDONNE | TRANSPORT |
++----------------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT EMPLOYEES.EMPNAME,DEPARTMENT.DPNAME FROM EMPLOYEES RIGHT JOIN DEPARTMENT ON DEPARTMENT.DEPID= EMPLOYEES.EMPID;
++----------------------+-----------+
+| EMPNAME              | DPNAME    |
++----------------------+-----------+
+| BYIRINGIRO EMMANUEL  | BIT       |
+| HAKIZIMANA EMMANUEL  | ACC       |
+| HAKIZIMANA BAHATI    | FINANCE   |
+| HABINGABIRE OLIVIER  | LOGISTIC  |
+| IRADUKUNDA DIEUDONNE | TRANSPORT |
++----------------------+-----------+
+5 rows in set (0.00 sec)
+
+
+mysql> SELECT MAX(EMPLSALARY) AS EMPLSALARY FROM EMPLOYEES;
++------------+
+| EMPLSALARY |
++------------+
+|     100000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLES STUDENTS( STUDENTID INT(4), FULLNAMES VARCHAR(255),GENDER VARCHAR(255),AGE INT(4),DEPARTMENT VARCHAR(255));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLES STUDENTS( STUDENTID INT(4), FULLNAMES VARCHAR(255),GENDER VARCHAR(255),AG' at line 1
+mysql> CREATE TABLE STUDENTS( STUDENTID INT(4), FULLNAMES VARCHAR(255),GENDER VARCHAR(255),AGE INT(4),DEPARTMENT VARCHAR(255));
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+mysql> INSERT INTO STUDENTS VALUES(1,"IRADUKUNDA DIEUDONNE","M",20,"BIT");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO STUDENTS VALUES(2,"CYUBAHIRO DIEUDONNE","M",30,"BIT");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO STUDENTS VALUES(3,"HABINGABIRE OLIVIER,"F",40,"BIT");
+
+mysql> INSERT INTO STUDENTS VALUES(4,"HAKIZIMANA OLIVIUS","M",23,"BIT");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO STUDENTS VALUES(5,"KINONO OLIVIUS","M",22,"BIT");
+Query OK, 1 row affected (0.00 sec)
+mysql> SELECT * FROM STUDENTS;
++-----------+----------------------+--------+------+------------+
+| STUDENTID | FULLNAMES            | GENDER | AGE  | DEPARTMENT |
++-----------+----------------------+--------+------+------------+
+|         1 | IRADUKUNDA DIEUDONNE | M      |   20 | BIT        |
+|         2 | CYUBAHIRO DIEUDONNE  | M      |   30 | BIT        |
+|         3 | HAKIZIMANA BAHATI    | M      |   23 | BIT        |
+|         4 | HAKIZIMANA OLIVIUS   | M      |   23 | BIT        |
+|         5 | KINONO OLIVIUS       | M      |   22 | BIT        |
++-----------+----------------------+--------+------+------------+
+5 rows in set (0.00 sec)
+mysql> CREATE VIEW LIST AS SELECT * FROM STUDENTS;
+Query OK, 0 rows affected (0.02 sec)
+mysql> SELECT * FROM LIST;
++-----------+----------------------+--------+------+------------+
+| STUDENTID | FULLNAMES            | GENDER | AGE  | DEPARTMENT |
++-----------+----------------------+--------+------+------------+
+|         1 | IRADUKUNDA DIEUDONNE | M      |   20 | BIT        |
+|         2 | CYUBAHIRO DIEUDONNE  | M      |   30 | BIT        |
+|         3 | HAKIZIMANA BAHATI    | M      |   23 | BIT        |
+|         4 | HAKIZIMANA OLIVIUS   | M      |   23 | BIT        |
+|         5 | KINONO OLIVIUS       | M      |   22 | BIT        |
++-----------+----------------------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> create VIEW GIRL AS select * from student where gender="f";
+mysql> select * from girl;
++-----------+----------------+--------+------+------------+
+| STUDENTID | FULLNAMES      | GENDER | AGE  | DEPARTMENT |
++-----------+----------------+--------+------+------------+
+|         5 | KINONO OLIVIUS | f      |   22 | BIT        |
++-----------+----------------+--------+------+------------+
+1 row in set (0.00 sec)
+mysql> create VIEW boy AS select * from student where gender="m";
+ERROR 1146 (42S02): Table 'examination.student' doesn't exist
+mysql> create VIEW boy AS select * from students where gender="m";
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from boy;
++-----------+----------------------+--------+------+------------+
+| STUDENTID | FULLNAMES            | GENDER | AGE  | DEPARTMENT |
++-----------+----------------------+--------+------+------------+
+|         1 | IRADUKUNDA DIEUDONNE | M      |   20 | BIT        |
+|         2 | CYUBAHIRO DIEUDONNE  | M      |   30 | BIT        |
+|         3 | HAKIZIMANA BAHATI    | M      |   23 | BIT        |
+|         4 | HAKIZIMANA OLIVIUS   | M      |   23 | BIT        |
++-----------+----------------------+--------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> delete from students where age <20;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from students;
++-----------+---------------------+--------+------+------------+
+| STUDENTID | FULLNAMES           | GENDER | AGE  | DEPARTMENT |
++-----------+---------------------+--------+------+------------+
+|         2 | CYUBAHIRO DIEUDONNE | M      |   30 | BIT        |
+|         3 | HAKIZIMANA BAHATI   | M      |   23 | BIT        |
+|         4 | HAKIZIMANA OLIVIUS  | M      |   23 | BIT        |
+|         5 | KINONO OLIVIUS      | f      |   22 | BIT        |
++-----------+---------------------+--------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql>  create table sales(saleNo int(4)primary key auto_increment,salesname varchar(255),Branch varchar(255),saleamount int(4),DOB varchar(255));
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+mysql> select * from sales;
+Empty set (0.00 sec)
+
+mysql> describe sales;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| saleNo     | int          | NO   | PRI | NULL    | auto_increment |
+| salesname  | varchar(255) | YES  |     | NULL    |                |
+| Branch     | varchar(255) | YES  |     | NULL    |                |
+| saleamount | int          | YES  |     | NULL    |                |
+| DOB        | varchar(255) | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql>  insert into sales values('',"nkuranga albert","NYAGATARE",25000,"21-DEC-2009");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql>  insert into sales values('',"Byiringiro albert","huye",22000,"22-DEC-2009");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql>  insert into sales values('',"Byiringiro EMMANUEL","KARONGI",52000,"23-DEC-2009");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql>  insert into sales values('',"CYUZUZO EMMA","RUTSIRO",62000,"24-DEC-2009");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql>  insert into sales values('',"CYUZUZO SENANI EVA","RUTSIRO",78000,"26-DEC-2009");
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> SELECT * FROM SALES;
++--------+---------------------+-----------+------------+-------------+
+| saleNo | salesname           | Branch    | saleamount | DOB         |
++--------+---------------------+-----------+------------+-------------+
+|      1 | nkuranga albert     | NYAGATARE |      25000 | 21-DEC-2009 |
+|      2 | Byiringiro albert   | huye      |      22000 | 22-DEC-2009 |
+|      3 | Byiringiro EMMANUEL | KARONGI   |      52000 | 23-DEC-2009 |
+|      4 | CYUZUZO EMMA        | RUTSIRO   |      62000 | 24-DEC-2009 |
+|      5 | CYUZUZO SENANI EVA  | RUTSIRO   |      78000 | 26-DEC-2009 |
++--------+---------------------+-----------+------------+-------------+
+mysql> select SUM(saleamount) from sales;
++-----------------+
+| SUM(saleamount) |
++-----------------+
+|          239000 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql>  select AVG(saleamount) from sales;
++-----------------+
+| AVG(saleamount) |
++-----------------+
+|      47800.0000 |
++-----------------+
+1 row in set (0.00 sec)
+
+
+mysql>  select salesname,DOB from sales where DOB="21-DEC-2009";
++-----------------+-------------+
+| salesname       | DOB         |
++-----------------+-------------+
+| nkuranga albert | 21-DEC-2009 |
++-----------------+-------------+
+1 row in set (0.00 sec)
+
+mysql>  select salesname,DOB from sales ORDER BY DOB ASC;
++---------------------+-------------+
+| salesname           | DOB         |
++---------------------+-------------+
+| nkuranga albert     | 21-DEC-2009 |
+| Byiringiro albert   | 22-DEC-2009 |
+| Byiringiro EMMANUEL | 23-DEC-2009 |
+| CYUZUZO EMMA        | 24-DEC-2009 |
+| CYUZUZO SENANI EVA  | 26-DEC-2009 |
++---------------------+-------------+
+5 rows in set (0.00 sec)
+
+
+mysql> create table EMPLOYEE(employee_id int(4) primary key auto_increment,First_name varchar(255),Last_name varchar(255),Email varchar(255),phone_number int(11),hire_date varchar(225),job_id int(4),salary int (4),commission_pct varchar(225),manager_id int(4),department_id int(4));
+Query OK, 0 rows affected, 6 warnings (0.02 sec)
+
+mysql> desc employee;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| employee_id    | int          | NO   | PRI | NULL    | auto_increment |
+| First_name     | varchar(255) | YES  |     | NULL    |                |
+| Last_name      | varchar(255) | YES  |     | NULL    |                |
+| Email          | varchar(255) | YES  |     | NULL    |                |
+| phone_number   | int          | YES  |     | NULL    |                |
+| hire_date      | varchar(225) | YES  |     | NULL    |                |
+| job_id         | int          | YES  |     | NULL    |                |
+| salary         | int          | YES  |     | NULL    |                |
+| commission_pct | varchar(225) | YES  |     | NULL    |                |
+| manager_id     | int          | YES  |     | NULL    |                |
+| department_id  | int          | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+11 rows in set (0.00 sec)
+mysql> insert into employee values('',"kagabo","innocent","innocent@gmail.com",087340892,"23-dec-2008",21,4800,"commission",100,70);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into employee values('',"kagabo","dirudonne","diort@gmail.com",087340892,"23-dec-2008",22,4800,"commission",100,80);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into employee values('',"kagabo","senani","senanit@gmail.com",087370892,"02-dec-2008",23,4802,"commission",120,60);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into employee values('',"kagabo","janvier","janvier@gmail.com",080370892,"22-dec-2008",53,5802,"commission",110,50);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into employee values('',"kagabo","saver","saverer@gmail.com",080377892,"12-dec-2008",83,5802,"commission",90,590);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> select * from employee;
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+| employee_id | First_name | Last_name | Email              | phone_number | hire_date   | job_id | salary | commission_pct | manager_id | department_id |
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+|           1 | kagabo     | innocent  | innocent@gmail.com |     87340892 | 23-dec-2008 |     21 |   4800 | commission     |        100 |            70 |
+|           2 | kagabo     | dirudonne | diort@gmail.com    |     87340892 | 23-dec-2008 |     22 |   4800 | commission     |        100 |            80 |
+|           3 | kagabo     | senani    | senanit@gmail.com  |     87370892 | 02-dec-2008 |     23 |   4802 | commission     |        120 |            60 |
+|           4 | kagabo     | janvier   | janvier@gmail.com  |     80370892 | 22-dec-2008 |     53 |   5802 | commission     |        110 |            50 |
+|           5 | kagabo     | saver     | saverer@gmail.com  |     80377892 | 12-dec-2008 |     83 |   5802 | commission     |         90 |           590 |
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql>  select employee_id,First_name,Last_name,salary from employee;
++-------------+------------+-----------+--------+
+| employee_id | First_name | Last_name | salary |
++-------------+------------+-----------+--------+
+|           1 | kagabo     | innocent  |   4800 |
+|           2 | kagabo     | dirudonne |   4800 |
+|           3 | kagabo     | senani    |   4802 |
+|           4 | kagabo     | janvier   |   5802 |
+|           5 | kagabo     | saver     |   5802 |
++-------------+------------+-----------+--------+
+5 rows in set (0.00 sec)
+mysql>  select * from employee where manager_id=100;
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+| employee_id | First_name | Last_name | Email              | phone_number | hire_date   | job_id | salary | commission_pct | manager_id | department_id |
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+|           1 | kagabo     | innocent  | innocent@gmail.com |     87340892 | 23-dec-2008 |     21 |   4800 | commission     |        100 |            70 |
+|           2 | kagabo     | dirudonne | diort@gmail.com    |     87340892 | 23-dec-2008 |     22 |   4800 | commission     |        100 |            80 |
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+2 rows in set (0.00 sec)
+mysql>  select First_name,Last_name, salary from employees where salary >=4800;
++------------+-----------+--------+
+| First_name | Last_name | salary |
++------------+-----------+--------+
+| kagabo     | innocent  |   4800 |
+| james      | muhire    |   5800 |
+| murindwa   | austin    |   6800 |
+| kanimba    | mugabo    |   7800 |
++------------+-----------+--------+
+mysql>  select * from employee where manager_id=100;
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+| employee_id | First_name | Last_name | Email              | phone_number | hire_date   | job_id | salary | commission_pct | manager_id | department_id |
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+|           1 | kagabo     | innocent  | innocent@gmail.com |     87340892 | 23-dec-2008 |     21 |   4800 | commission     |        100 |            70 |
+|           2 | kagabo     | dirudonne | diort@gmail.com    |     87340892 | 23-dec-2008 |     22 |   4800 | commission     |        100 |            80 |
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+2 rows in set (0.00 sec)
+ select * from employees where department_id IN(60,70,80);
+-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+| employee_id | First_name | Last_name | Email              | phone_number | hire_date   | job_id | salary | commission_pct | manager_id | department_id |
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
+|           1 | kagabo     | innocent  | innocent@gmail.com |    783401856 | 23-dec-2009 |     23 |   4800 | comm           |        100 |            60 |
+|           2 | james      | muhire    | muhire@gmail.com   |    783401857 | 21-jan-2019 |     24 |   5800 | comm           |         90 |            70 |
+|           3 | james      | bahati    | bahati@gmail.com   |    783401859 | 22-dec-2020 |     25 |   3800 | comm           |        100 |            80 |
++-------------+------------+-----------+--------------------+--------------+-------------+--------+--------+----------------+------------+---------------+
