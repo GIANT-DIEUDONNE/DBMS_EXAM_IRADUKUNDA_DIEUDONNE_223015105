@@ -4,8 +4,13 @@ Query OK, 1 row affected (0.01 sec)
 
 mysql> USE EXAMINATION;
 Database changed
+
+PART A:
+
 mysql> CREATE TABLE CLIENT_MASTER(clientNo int(4) primary key auto_increment,name varchar(255),Address varchar(255),City varchar(255),State varchar(255),bal_due int(4));
 Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+Question 1
 
 mysql> insert into client_master values('',"iradukunda dieudonne","H23","HUYE","LOSNGLES",2300);
 Query OK, 1 row affected, 1 warning (0.03 sec)
@@ -34,6 +39,8 @@ mysql> SELECT * FROM CLIENT_MASTER;
 +----------+----------------------+---------+------+----------+---------+
 5 rows in set (0.00 sec)
 
+Question 2
+
 mysql> SELECT NAME FROM CLIENT_MASTER WHERE BAL_DUE>5000;
 +----------------+
 | NAME           |
@@ -41,6 +48,7 @@ mysql> SELECT NAME FROM CLIENT_MASTER WHERE BAL_DUE>5000;
 | ABIMANA SIMEON |
 +----------------+
 1 row in set (0.00 sec)
+Question 3
 
 mysql> UPDATE SET bal_due=5100 where clientno=1;
 ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET bal_due=5100 where clientno=1' at line 1
@@ -107,6 +115,7 @@ mysql> select * from client_master;
 |        5 | client12             | H41     | HUYE | LOSNGLES |    6400 |
 +----------+----------------------+---------+------+----------+---------+
 5 rows in set (0.00 sec)
+Question 4
 
 mysql> alter table client_master rename to Client12;
 Query OK, 0 rows affected (0.01 sec)
@@ -122,6 +131,8 @@ mysql> select * from client12;
 |        5 | client12             | H41     | HUYE | LOSNGLES |    6400 |
 +----------+----------------------+---------+------+----------+---------+
 5 rows in set (0.01 sec)
+PART B:
+Question 6
 
 mysql> create table DEPARTMENT(DEPId int(4) primary key auto_increment,DPname varchar(255),DPLOCATION VARCHAR(255),DEPTEL INT(4),DEPINFO VARCHAR(255));
 Query OK, 0 rows affected, 2 warnings (0.03 sec)
@@ -233,6 +244,8 @@ mysql> SELECT MAX(EMPLSALARY) AS EMPLSALARY FROM EMPLOYEES;
 +------------+
 1 row in set (0.00 sec)
 
+Question 7
+
 mysql> CREATE TABLES STUDENTS( STUDENTID INT(4), FULLNAMES VARCHAR(255),GENDER VARCHAR(255),AGE INT(4),DEPARTMENT VARCHAR(255));
 ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLES STUDENTS( STUDENTID INT(4), FULLNAMES VARCHAR(255),GENDER VARCHAR(255),AG' at line 1
 mysql> CREATE TABLE STUDENTS( STUDENTID INT(4), FULLNAMES VARCHAR(255),GENDER VARCHAR(255),AGE INT(4),DEPARTMENT VARCHAR(255));
@@ -314,6 +327,9 @@ mysql> select * from students;
 +-----------+---------------------+--------+------+------------+
 4 rows in set (0.00 sec)
 
+PART C:
+Question 10
+
 mysql>  create table sales(saleNo int(4)primary key auto_increment,salesname varchar(255),Branch varchar(255),saleamount int(4),DOB varchar(255));
 Query OK, 0 rows affected, 2 warnings (0.02 sec)
 
@@ -394,6 +410,7 @@ mysql>  select salesname,DOB from sales ORDER BY DOB ASC;
 +---------------------+-------------+
 5 rows in set (0.00 sec)
 
+Question 9
 
 mysql> create table EMPLOYEE(employee_id int(4) primary key auto_increment,First_name varchar(255),Last_name varchar(255),Email varchar(255),phone_number int(11),hire_date varchar(225),job_id int(4),salary int (4),commission_pct varchar(225),manager_id int(4),department_id int(4));
 Query OK, 0 rows affected, 6 warnings (0.02 sec)
